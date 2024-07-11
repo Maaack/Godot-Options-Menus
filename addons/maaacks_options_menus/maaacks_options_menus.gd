@@ -5,7 +5,7 @@ const PLUGIN_NAME = "Maaack's Options Menus"
 const PROJECT_SETTINGS_PATH = "maaacks_options_menus/"
 
 const EXAMPLES_RELATIVE_PATH = "examples/"
-const MAIN_SCENE_RELATIVE_PATH = "scenes/Opening/OpeningWithLogo.tscn"
+const MAIN_SCENE_RELATIVE_PATH = "scenes/Menus/OptionsMenu/MasterOptionsMenuWithTabs.tscn"
 const MAIN_SCENE_UPDATE_TEXT = "Current:\n%s\n\nNew:\n%s\n"
 const OVERRIDE_RELATIVE_PATH = "installer/override.cfg"
 const SCENE_LOADER_RELATIVE_PATH = "base/scenes/Autoloads/SceneLoader.tscn"
