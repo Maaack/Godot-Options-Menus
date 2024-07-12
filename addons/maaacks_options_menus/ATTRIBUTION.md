@@ -2,8 +2,8 @@
 ## Collaborators
 
 ### Godot Options Menus
-Author: [Marek Belski and contributors](https://github.com/Maaack/Godot-Game-Template/graphs/contributors)  
-Source: [github: Godot-Game-Template](https://github.com/Maaack/Godot-Game-Template)  
+Author: [Marek Belski and contributors](https://github.com/Maaack/Godot-Options-Menus/graphs/contributors)  
+Source: [github: Godot-Options-Menus](https://github.com/Maaack/Godot-Options-Menus)  
 License: [MIT License](LICENSE.txt)  
 
 ## Tools

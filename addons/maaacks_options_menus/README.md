@@ -88,4 +88,4 @@ A copy of the `examples/` directory is made outside of `addons/` when the plugin
 ## Links
 [Attribution](/addons/maaacks_options_menus/ATTRIBUTION.md)  
 [License](/addons/maaacks_options_menus/LICENSE.txt)  
-[Godot Asset Library - Plugin](https://godotengine.org/asset-library/asset/2899) 
+[Godot Asset Library - Plugin](https://godotengine.org/asset-library/asset/3058) 
