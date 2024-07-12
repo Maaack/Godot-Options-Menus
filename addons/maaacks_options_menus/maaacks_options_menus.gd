@@ -84,6 +84,10 @@ func _raw_copy_file_path(file_path : String, destination_path : String) -> Error
 		EditorInterface.get_resource_filesystem().update_file(destination_path)
 	return error
 
+func _copy_override_file():
+	var override_path : String = get_plugin_path() + OVERRIDE_RELATIVE_PATH
+	_raw_copy_file_path(override_path, "res://"+override_path.get_file())
+
 func _copy_file_path(file_path : String, destination_path : String, target_path : String, raw_copy_file_extensions : PackedStringArray = []) -> Error:
 	if file_path.get_extension() in raw_copy_file_extensions:
 		# Markdown file format
@@ -140,6 +144,7 @@ func _copy_to_directory(target_path : String):
 	if not target_path.ends_with("/"):
 		target_path += "/"
 	_copy_directory_path(get_plugin_examples_path(), target_path, ["md"])
+	_copy_override_file()
 	_delayed_saving(target_path)
 
 func _open_path_dialog():
