@@ -6,6 +6,15 @@ This plugin has options menus that aim to be easy to customize and persist setti
 [Example on itch.io](https://maaack.itch.io/godot-game-template)  
 _Example is of [Maaack's Game Template](https://github.com/Maaack/Godot-Game-Template), which includes additional features._
 
+
+#### Videos
+
+[![Quick Intro Video](https://img.youtube.com/vi/U9CB3vKINVw/hqdefault.jpg)](https://youtu.be/U9CB3vKINVw)  
+[![Installation Video](https://img.youtube.com/vi/-QWJnZ8bVdk/hqdefault.jpg)](https://youtu.be/-QWJnZ8bVdk)  
+[All videos](/addons/maaacks_menus_template/docs/Videos.md)
+
+#### Screenshots
+
 ![Key Rebinding](/addons/maaacks_options_menus/media/Screenshot-3-2.png)  
 ![Key Rebinding Confirmation](/addons/maaacks_options_menus/media/Screenshot-4-2.png) 
 ![Audio Controls](/addons/maaacks_options_menus/media/Screenshot-3-4.png)  
@@ -53,7 +62,6 @@ When editing an existing project:
 8.  Enable the plugin from the Project Settings > Plugins tab.  
     If it's enabled for the first time,
     1.  A dialogue window will appear asking to copy the example scenes out of `addons/`.
-    2.  Another dialogue window will ask to update the project's main scene.
 9.  Continue with the [Existing Project Instructions](/addons/maaacks_options_menus/docs/ExistingProject.md)  
 
 
@@ -67,7 +75,6 @@ When editing an existing project:
 5.  Enable the plugin from the Project Settings > Plugins tab.  
     If it's enabled for the first time,
     1.  A dialogue window will appear asking to copy the example scenes out of `addons/`.
-    2.  Another dialogue window will ask to update the project's main scene.
 6.  Continue with the [Existing Project Instructions](/addons/maaacks_options_menus/docs/ExistingProject.md) 
 
 #### Extras
