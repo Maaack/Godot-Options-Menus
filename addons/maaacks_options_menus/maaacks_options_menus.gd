@@ -27,20 +27,6 @@ func _update_main_scene(main_scene_path : String):
 	ProjectSettings.set_setting("application/run/main_scene", main_scene_path)
 	ProjectSettings.save()
 
-func _check_main_scene_needs_updating(target_path : String):
-	var current_main_scene_path = ProjectSettings.get_setting("application/run/main_scene", "")
-	var new_main_scene_path = target_path + MAIN_SCENE_RELATIVE_PATH
-	if new_main_scene_path == current_main_scene_path:
-		return
-	_open_main_scene_confirmation_dialog(current_main_scene_path, new_main_scene_path)
-
-func _open_main_scene_confirmation_dialog(current_main_scene : String, new_main_scene : String):
-	var main_confirmation_scene : PackedScene = load(get_plugin_path() + "installer/MainSceneConfirmationDialog.tscn")
-	var main_confirmation_instance : ConfirmationDialog = main_confirmation_scene.instantiate()
-	main_confirmation_instance.dialog_text += MAIN_SCENE_UPDATE_TEXT % [current_main_scene, new_main_scene]
-	main_confirmation_instance.confirmed.connect(_update_main_scene.bind(new_main_scene))
-	add_child(main_confirmation_instance)
-
 func _replace_file_contents(file_path : String, target_path : String):
 	var extension : String = file_path.get_extension()
 	if extension == "import":
@@ -98,10 +84,6 @@ func _raw_copy_file_path(file_path : String, destination_path : String) -> Error
 		EditorInterface.get_resource_filesystem().update_file(destination_path)
 	return error
 
-func _copy_override_file():
-	var override_path : String = get_plugin_path() + OVERRIDE_RELATIVE_PATH
-	_raw_copy_file_path(override_path, "res://"+override_path.get_file())
-
 func _copy_file_path(file_path : String, destination_path : String, target_path : String, raw_copy_file_extensions : PackedStringArray = []) -> Error:
 	if file_path.get_extension() in raw_copy_file_extensions:
 		# Markdown file format
@@ -142,23 +124,11 @@ func _copy_directory_path(dir_path : String, target_path : String, raw_copy_file
 	else:
 		push_error("plugin error - accessing path: %s" % dir_path)
 
-func _update_scene_loader_path(target_path : String):
-	var file_path : String = get_plugin_path() + SCENE_LOADER_RELATIVE_PATH
-	var file_text : String = FileAccess.get_file_as_string(file_path)
-	var prefix : String = "loading_screen_path = \""
-	var target_string =  prefix + get_plugin_path() + "base/"
-	var replacing_string = prefix + target_path
-	file_text = file_text.replace(target_string, replacing_string)
-	var file = FileAccess.open(file_path, FileAccess.WRITE)
-	file.store_string(file_text)
-	file.close()
-
-func _delayed_saving_and_check_main_scene(target_path : String):
+func _delayed_saving(target_path : String):
 	var timer: Timer = Timer.new()
 	var callable := func():
 		timer.stop()
 		EditorInterface.save_all_scenes()
-		_check_main_scene_needs_updating(target_path)
 		timer.queue_free()
 	timer.timeout.connect(callable)
 	add_child(timer)
@@ -170,22 +140,18 @@ func _copy_to_directory(target_path : String):
 	if not target_path.ends_with("/"):
 		target_path += "/"
 	_copy_directory_path(get_plugin_examples_path(), target_path, ["md"])
-	_update_scene_loader_path(target_path)
-	_copy_override_file()
-	_delayed_saving_and_check_main_scene(target_path)
+	_delayed_saving(target_path)
 
 func _open_path_dialog():
 	var destination_scene : PackedScene = load(get_plugin_path() + "installer/DestinationDialog.tscn")
 	var destination_instance : FileDialog = destination_scene.instantiate()
 	destination_instance.dir_selected.connect(_copy_to_directory)
-	destination_instance.canceled.connect(_check_main_scene_needs_updating.bind(get_plugin_examples_path()))
 	add_child(destination_instance)
 
 func _open_confirmation_dialog():
 	var confirmation_scene : PackedScene = load(get_plugin_path() + "installer/CopyConfirmationDialog.tscn")
 	var confirmation_instance : ConfirmationDialog = confirmation_scene.instantiate()
 	confirmation_instance.confirmed.connect(_open_path_dialog)
-	confirmation_instance.canceled.connect(_check_main_scene_needs_updating.bind(get_plugin_examples_path()))
 	add_child(confirmation_instance)
 
 func _show_plugin_dialogues():
@@ -196,24 +162,9 @@ func _show_plugin_dialogues():
 	ProjectSettings.set_setting(PROJECT_SETTINGS_PATH + "disable_plugin_dialogues", true)
 	ProjectSettings.save()
 
-func _resave_if_recently_opened():
-	if Engine.get_physics_frames() == 0:
-		var timer: Timer = Timer.new()
-		var callable := func():
-			if Engine.get_frames_per_second() >= 10:
-				timer.stop()
-				EditorInterface.save_scene()
-				timer.queue_free()
-		timer.timeout.connect(callable)
-		add_child(timer)
-		timer.start(OPEN_EDITOR_DELAY)
-
 func _enter_tree():
-	add_autoload_singleton("AppConfig", get_plugin_path() + "base/scenes/Autoloads/AppConfig.tscn")
 	add_tool_menu_item("Copy " + _get_plugin_name() + " Examples...", _open_path_dialog)
 	_show_plugin_dialogues()
-	_resave_if_recently_opened()
 
 func _exit_tree():
-	remove_autoload_singleton("AppConfig")
 	remove_tool_menu_item("Copy " + _get_plugin_name() + " Examples...",)
