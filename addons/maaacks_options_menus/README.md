@@ -11,7 +11,7 @@ _Example is of [Maaack's Game Template](https://github.com/Maaack/Godot-Game-Tem
 
 [![Quick Intro Video](https://img.youtube.com/vi/U9CB3vKINVw/hqdefault.jpg)](https://youtu.be/U9CB3vKINVw)  
 [![Installation Video](https://img.youtube.com/vi/-QWJnZ8bVdk/hqdefault.jpg)](https://youtu.be/-QWJnZ8bVdk)  
-[All videos](/addons/maaacks_menus_template/docs/Videos.md)
+[All videos](/addons/maaacks_options_menus/docs/Videos.md)
 
 #### Screenshots
 
