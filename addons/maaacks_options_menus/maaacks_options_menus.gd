@@ -242,8 +242,10 @@ func _remove_copy_tool_if_examples_exists():
 		remove_tool_menu_item("Delete " + _get_plugin_name() + " Examples...")
 
 func _enter_tree():
+	add_autoload_singleton("AppConfig", get_plugin_path() + "base/scenes/Autoloads/AppConfig.tscn")
 	_add_copy_tool_if_examples_exists()
 	_show_plugin_dialogues()
 
 func _exit_tree():
+	remove_autoload_singleton("AppConfig")
 	_remove_copy_tool_if_examples_exists()
