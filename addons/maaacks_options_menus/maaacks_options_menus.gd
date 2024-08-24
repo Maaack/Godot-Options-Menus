@@ -23,9 +23,67 @@ func get_plugin_path() -> String:
 func get_plugin_examples_path() -> String:
 	return get_plugin_path() + EXAMPLES_RELATIVE_PATH
 
-func _update_main_scene(main_scene_path : String):
-	ProjectSettings.set_setting("application/run/main_scene", main_scene_path)
-	ProjectSettings.save()
+func _open_play_opening_confirmation_dialog(target_path : String):
+	var play_confirmation_scene : PackedScene = load(get_plugin_path() + "installer/PlayOpeningConfirmationDialog.tscn")
+	var play_confirmation_instance : ConfirmationDialog = play_confirmation_scene.instantiate()
+	play_confirmation_instance.confirmed.connect(_run_opening_scene.bind(target_path))
+	add_child(play_confirmation_instance)
+
+func _open_delete_examples_confirmation_dialog(target_path : String):
+	var delete_confirmation_scene : PackedScene = load(get_plugin_path() + "installer/DeleteExamplesConfirmationDialog.tscn")
+	var delete_confirmation_instance : ConfirmationDialog = delete_confirmation_scene.instantiate()
+	delete_confirmation_instance.confirmed.connect(_delete_source_examples_directory.bind(target_path))
+	add_child(delete_confirmation_instance)
+
+func _open_delete_examples_short_confirmation_dialog():
+	var delete_confirmation_scene : PackedScene = load(get_plugin_path() + "installer/DeleteExamplesShortConfirmationDialog.tscn")
+	var delete_confirmation_instance : ConfirmationDialog = delete_confirmation_scene.instantiate()
+	delete_confirmation_instance.confirmed.connect(_delete_source_examples_directory)
+	add_child(delete_confirmation_instance)
+
+func _run_opening_scene(target_path : String):
+	var opening_scene_path = target_path + MAIN_SCENE_RELATIVE_PATH
+	EditorInterface.play_custom_scene(opening_scene_path)
+	var timer: Timer = Timer.new()
+	var callable := func():
+		if EditorInterface.is_playing_scene(): return
+		timer.stop()
+		_open_delete_examples_confirmation_dialog(target_path)
+		timer.queue_free()
+	timer.timeout.connect(callable)
+	add_child(timer)
+	timer.start(RESAVING_DELAY)
+
+func _delete_directory_recursive(dir_path : String):
+	if not dir_path.ends_with("/"):
+		dir_path += "/"
+	var dir = DirAccess.open(dir_path)
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		var error : Error
+		while file_name != "" and error == 0:
+			var relative_path = dir_path.trim_prefix(get_plugin_examples_path())
+			var full_file_path = dir_path + file_name
+			if dir.current_is_dir():
+				_delete_directory_recursive(full_file_path)
+			else:
+				error = dir.remove(file_name)
+			file_name = dir.get_next()
+		if error:
+			push_error("plugin error - deleting path: %s" % error)
+	else:
+		push_error("plugin error - accessing path: %s" % dir)
+	dir.remove(dir_path)
+
+func _delete_source_examples_directory(_target_path : String = ""):
+	var examples_path = get_plugin_examples_path()
+	var dir := DirAccess.open("res://")
+	if dir.dir_exists(examples_path):
+		_delete_directory_recursive(examples_path)
+		EditorInterface.get_resource_filesystem().scan()
+		remove_tool_menu_item("Copy " + _get_plugin_name() + " Examples...")
+		remove_tool_menu_item("Delete " + _get_plugin_name() + " Examples...")
 
 func _replace_file_contents(file_path : String, target_path : String):
 	var extension : String = file_path.get_extension()
@@ -132,7 +190,9 @@ func _delayed_saving(target_path : String):
 	var timer: Timer = Timer.new()
 	var callable := func():
 		timer.stop()
+		EditorInterface.get_resource_filesystem().scan()
 		EditorInterface.save_all_scenes()
+		_open_play_opening_confirmation_dialog(target_path)
 		timer.queue_free()
 	timer.timeout.connect(callable)
 	add_child(timer)
@@ -167,9 +227,23 @@ func _show_plugin_dialogues():
 	ProjectSettings.set_setting(PROJECT_SETTINGS_PATH + "disable_plugin_dialogues", true)
 	ProjectSettings.save()
 
+func _add_copy_tool_if_examples_exists():
+	var examples_path = get_plugin_examples_path()
+	var dir := DirAccess.open("res://")
+	if dir.dir_exists(examples_path):
+		add_tool_menu_item("Copy " + _get_plugin_name() + " Examples...", _open_path_dialog)
+		add_tool_menu_item("Delete " + _get_plugin_name() + " Examples...", _open_delete_examples_short_confirmation_dialog)
+
+func _remove_copy_tool_if_examples_exists():
+	var examples_path = get_plugin_examples_path()
+	var dir := DirAccess.open("res://")
+	if dir.dir_exists(examples_path):
+		remove_tool_menu_item("Copy " + _get_plugin_name() + " Examples...")
+		remove_tool_menu_item("Delete " + _get_plugin_name() + " Examples...")
+
 func _enter_tree():
-	add_tool_menu_item("Copy " + _get_plugin_name() + " Examples...", _open_path_dialog)
+	_add_copy_tool_if_examples_exists()
 	_show_plugin_dialogues()
 
 func _exit_tree():
-	remove_tool_menu_item("Copy " + _get_plugin_name() + " Examples...",)
+	_remove_copy_tool_if_examples_exists()
