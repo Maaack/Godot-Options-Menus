@@ -5,10 +5,10 @@ const PLUGIN_NAME = "Maaack's Options Menus"
 const PROJECT_SETTINGS_PATH = "maaacks_options_menus/"
 
 const EXAMPLES_RELATIVE_PATH = "examples/"
-const MAIN_SCENE_RELATIVE_PATH = "scenes/Menus/OptionsMenu/MasterOptionsMenuWithTabs.tscn"
+const MAIN_SCENE_RELATIVE_PATH = "scenes/menus/options_menu/master_options_menu_with_tabs.tscn"
 const MAIN_SCENE_UPDATE_TEXT = "Current:\n%s\n\nNew:\n%s\n"
 const OVERRIDE_RELATIVE_PATH = "installer/override.cfg"
-const SCENE_LOADER_RELATIVE_PATH = "base/scenes/Autoloads/SceneLoader.tscn"
+const SCENE_LOADER_RELATIVE_PATH = "base/scenes/autoloads/scene_loader.tscn"
 const UID_PREG_MATCH = r'uid="uid:\/\/[0-9a-z]+" '
 const RESAVING_DELAY : float = 0.5
 const REIMPORT_FILE_DELAY : float = 0.2
@@ -24,19 +24,19 @@ func get_plugin_examples_path() -> String:
 	return get_plugin_path() + EXAMPLES_RELATIVE_PATH
 
 func _open_play_opening_confirmation_dialog(target_path : String):
-	var play_confirmation_scene : PackedScene = load(get_plugin_path() + "installer/PlayOpeningConfirmationDialog.tscn")
+	var play_confirmation_scene : PackedScene = load(get_plugin_path() + "installer/play_opening_confirmation_dialog.tscn")
 	var play_confirmation_instance : ConfirmationDialog = play_confirmation_scene.instantiate()
 	play_confirmation_instance.confirmed.connect(_run_opening_scene.bind(target_path))
 	add_child(play_confirmation_instance)
 
 func _open_delete_examples_confirmation_dialog(target_path : String):
-	var delete_confirmation_scene : PackedScene = load(get_plugin_path() + "installer/DeleteExamplesConfirmationDialog.tscn")
+	var delete_confirmation_scene : PackedScene = load(get_plugin_path() + "installer/delete_examples_confirmation_dialog.tscn")
 	var delete_confirmation_instance : ConfirmationDialog = delete_confirmation_scene.instantiate()
 	delete_confirmation_instance.confirmed.connect(_delete_source_examples_directory.bind(target_path))
 	add_child(delete_confirmation_instance)
 
 func _open_delete_examples_short_confirmation_dialog():
-	var delete_confirmation_scene : PackedScene = load(get_plugin_path() + "installer/DeleteExamplesShortConfirmationDialog.tscn")
+	var delete_confirmation_scene : PackedScene = load(get_plugin_path() + "installer/delete_examples_short_confirmation_dialog.tscn")
 	var delete_confirmation_instance : ConfirmationDialog = delete_confirmation_scene.instantiate()
 	delete_confirmation_instance.confirmed.connect(_delete_source_examples_directory)
 	add_child(delete_confirmation_instance)
@@ -208,13 +208,13 @@ func _copy_to_directory(target_path : String):
 	_delayed_saving(target_path)
 
 func _open_path_dialog():
-	var destination_scene : PackedScene = load(get_plugin_path() + "installer/DestinationDialog.tscn")
+	var destination_scene : PackedScene = load(get_plugin_path() + "installer/destination_dialog.tscn")
 	var destination_instance : FileDialog = destination_scene.instantiate()
 	destination_instance.dir_selected.connect(_copy_to_directory)
 	add_child(destination_instance)
 
 func _open_confirmation_dialog():
-	var confirmation_scene : PackedScene = load(get_plugin_path() + "installer/CopyConfirmationDialog.tscn")
+	var confirmation_scene : PackedScene = load(get_plugin_path() + "installer/copy_confirmation_dialog.tscn")
 	var confirmation_instance : ConfirmationDialog = confirmation_scene.instantiate()
 	confirmation_instance.confirmed.connect(_open_path_dialog)
 	add_child(confirmation_instance)
@@ -242,7 +242,7 @@ func _remove_copy_tool_if_examples_exists():
 		remove_tool_menu_item("Delete " + _get_plugin_name() + " Examples...")
 
 func _enter_tree():
-	add_autoload_singleton("AppConfig", get_plugin_path() + "base/scenes/Autoloads/AppConfig.tscn")
+	add_autoload_singleton("AppConfig", get_plugin_path() + "base/scenes/autoloads/app_config.tscn")
 	_add_copy_tool_if_examples_exists()
 	_show_plugin_dialogues()
 
