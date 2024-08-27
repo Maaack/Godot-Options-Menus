@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="Options Menus"
-run/main_scene="res://scenes/Menus/OptionsMenu/MasterOptionsMenuWithTabs.tscn"
+run/main_scene="res://scenes/menus/options_menu/master_options_menu_with_tabs.tscn"
 config/features=PackedStringArray("4.3")
 config/icon="res://icon.png"
 
 [autoload]
 
-AppConfig="*res://addons/maaacks_options_menus/base/scenes/Autoloads/AppConfig.tscn"
+AppConfig="*res://addons/maaacks_options_menus/base/scenes/autoloads/app_config.tscn"
 
 [display]
 
@@ -26,7 +26,7 @@ window/size/viewport_height=720
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/maaacks_options_menus/plugin.cfg")
+enabled=PackedStringArray("res://addons/asdf/plugin.cfg", "res://addons/maaacks_options_menus/plugin.cfg")
 
 [gui]
 
