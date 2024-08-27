@@ -1,5 +1,5 @@
 # Godot Options Menus
-For Godot 4.2
+For Godot 4.2+
 
 This plugin has options menus that aim to be easy to customize and persist settings in a user's config file.
 
@@ -15,11 +15,11 @@ _Example is of [Maaack's Game Template](https://github.com/Maaack/Godot-Game-Tem
 
 #### Screenshots
 
-![Key Rebinding](/addons/maaacks_options_menus/media/Screenshot-3-2.png)  
-![Key Rebinding Confirmation](/addons/maaacks_options_menus/media/Screenshot-4-2.png) 
-![Audio Controls](/addons/maaacks_options_menus/media/Screenshot-3-4.png)  
-![Video Controls](/addons/maaacks_options_menus/media/Screenshot-4-3.png) 
-[All screenshots](/addons/maaacks_options_menus/docs/Screenshots.md)
+![Key Rebinding](/addons/maaacks_options_menus/media/screenshot-3-2.png)  
+![Key Rebinding Confirmation](/addons/maaacks_options_menus/media/screenshot-4-2.png) 
+![Audio Controls](/addons/maaacks_options_menus/media/screenshot-3-4.png)  
+![Video Controls](/addons/maaacks_options_menus/media/screenshot-4-3.png) 
+[All screenshots](/addons/maaacks_options_menus/docs/screenshots.md)
 
 ## Use Case
 Setup options menus and accessibility features in about 15 minutes.
@@ -40,15 +40,15 @@ The `base/` folder holds the core components of the menus application.
 
 
 ### How it Works
-- `AppConfig.tscn` is set as the first autoload. It calls `AppSettings.gd` to load all the configuration settings from the config file (if it exists) through `Config.gd`.
-- `OptionControl.tscn` and its inherited scenes are used for most configurable options in the menus. They work with `Config.gd` to keep settings persistent between runs.
+- `app_config.tscn` is set as the first autoload. It calls `app_settings.gd` to load all the configuration settings from the config file (if it exists) through `config.gd`.
+- `option_control.tscn` and its inherited scenes are used for most configurable options in the menus. They work with `config.gd` to keep settings persistent between runs.
   
 ## Installation
 
 ### Godot Asset Library
 This package is available as a plugin, meaning it can be added to an existing project. 
 
-![Package Icon](/addons/maaacks_options_menus/media/Options-Icon-black-transparent-256x256.png)  
+![Package Icon](/addons/maaacks_options_menus/media/options-icon-black-transparent-256x256.png)  
 
 When editing an existing project:
 
@@ -68,7 +68,7 @@ When editing an existing project:
 ### GitHub
 
 
-1.  Download the latest release version from [GitHub](https://github.com/Maaack/Godot-Menus-Template/releases/latest).  
+1.  Download the latest release version from [GitHub](https://github.com/Maaack/Godot-Options-Menus/releases/latest).  
 2.  Extract the contents of the archive.
 3.  Move the `addons/maaacks_options_menus` folder into your project's `addons/` folder.  
 4.  Open/Reload the project.  
