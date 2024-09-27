@@ -6,13 +6,13 @@ const PROJECT_SETTINGS_PATH = "maaacks_options_menus/"
 
 const EXAMPLES_RELATIVE_PATH = "examples/"
 const MAIN_SCENE_RELATIVE_PATH = "scenes/menus/options_menu/master_options_menu_with_tabs.tscn"
-const MAIN_SCENE_UPDATE_TEXT = "Current:\n%s\n\nNew:\n%s\n"
 const OVERRIDE_RELATIVE_PATH = "installer/override.cfg"
-const SCENE_LOADER_RELATIVE_PATH = "base/scenes/autoloads/scene_loader.tscn"
 const UID_PREG_MATCH = r'uid="uid:\/\/[0-9a-z]+" '
 const RESAVING_DELAY : float = 0.5
 const REIMPORT_FILE_DELAY : float = 0.2
 const OPEN_EDITOR_DELAY : float = 0.1
+const MAX_PHYSICS_FRAMES_FROM_START : int = 20
+const AVAILABLE_TRANSLATIONS : Array = ["en", "fr"]
 
 func _get_plugin_name():
 	return PLUGIN_NAME
@@ -198,6 +198,15 @@ func _delayed_saving(target_path : String):
 	add_child(timer)
 	timer.start(RESAVING_DELAY)
 
+func _add_translations():
+	var dir := DirAccess.open("res://")
+	var translations : PackedStringArray = ProjectSettings.get_setting("internationalization/locale/translations", [])
+	for available_translation in AVAILABLE_TRANSLATIONS:
+		var translation_path = get_plugin_path() + ("base/translations/menus_translations.%s.translation" % available_translation)
+		if dir.file_exists(translation_path) and translation_path not in translations:
+			translations.append(translation_path)
+	ProjectSettings.set_setting("internationalization/locale/translations", translations)
+
 func _copy_to_directory(target_path : String):
 	ProjectSettings.set_setting(PROJECT_SETTINGS_PATH + "copy_path", target_path)
 	ProjectSettings.save()
@@ -227,6 +236,18 @@ func _show_plugin_dialogues():
 	ProjectSettings.set_setting(PROJECT_SETTINGS_PATH + "disable_plugin_dialogues", true)
 	ProjectSettings.save()
 
+func _resave_if_recently_opened():
+	if Engine.get_physics_frames() < MAX_PHYSICS_FRAMES_FROM_START:
+		var timer: Timer = Timer.new()
+		var callable := func():
+			if Engine.get_frames_per_second() >= 10:
+				timer.stop()
+				EditorInterface.save_scene()
+				timer.queue_free()
+		timer.timeout.connect(callable)
+		add_child(timer)
+		timer.start(OPEN_EDITOR_DELAY)
+
 func _add_copy_tool_if_examples_exists():
 	var examples_path = get_plugin_examples_path()
 	var dir := DirAccess.open("res://")
@@ -245,6 +266,8 @@ func _enter_tree():
 	add_autoload_singleton("AppConfig", get_plugin_path() + "base/scenes/autoloads/app_config.tscn")
 	_add_copy_tool_if_examples_exists()
 	_show_plugin_dialogues()
+	_add_translations()
+	_resave_if_recently_opened()
 
 func _exit_tree():
 	remove_autoload_singleton("AppConfig")

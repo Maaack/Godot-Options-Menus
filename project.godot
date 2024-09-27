@@ -26,7 +26,7 @@ window/size/viewport_height=720
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/asdf/plugin.cfg", "res://addons/maaacks_options_menus/plugin.cfg")
+enabled=PackedStringArray("res://addons/maaacks_options_menus/plugin.cfg")
 
 [gui]
 
