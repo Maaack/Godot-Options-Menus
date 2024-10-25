@@ -23,8 +23,7 @@ if [ -z "$source" ]; then
     source="$user_input"
 fi
 
-
-# Directories A and B
+# Source and destination directors
 src_dir="$source/addons/maaacks_menus_template"
 dest_dir="../addons/maaacks_options_menus"
 
@@ -35,13 +34,11 @@ rsync -av --existing "$src_dir/" "$dest_dir"
 finds=("menus_template" "Menus Template" "Menus-Template" "menus-template")
 replaces=("options_menus" "Options Menus" "Options-Menus" "options-menus")
 
-
-# Check for the existence of directories and upload contents
+# Checks for strings and replaces them
 for ((i=0; i<${#finds[@]}; i++)); do
     find="${finds[i]}"
     replace="${replaces[i]}"
     
-
     # Find and replace in all files in the destination directory
     find "$dest_dir" -type f -exec sed -i "s/${find}/${replace}/g" {} +
 done
