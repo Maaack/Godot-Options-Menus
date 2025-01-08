@@ -8,11 +8,14 @@ const EXAMPLES_RELATIVE_PATH = "examples/"
 const MAIN_SCENE_RELATIVE_PATH = "scenes/menus/options_menu/master_options_menu_with_tabs.tscn"
 const OVERRIDE_RELATIVE_PATH = "installer/override.cfg"
 const UID_PREG_MATCH = r'uid="uid:\/\/[0-9a-z]+" '
-const RESAVING_DELAY : float = 0.5
-const REIMPORT_FILE_DELAY : float = 0.2
+const WINDOW_OPEN_DELAY : float = 1.5
+const RUNNING_CHECK_DELAY : float = 0.25
+const RESAVING_DELAY : float = 1.0
 const OPEN_EDITOR_DELAY : float = 0.1
 const MAX_PHYSICS_FRAMES_FROM_START : int = 20
 const AVAILABLE_TRANSLATIONS : Array = ["en", "fr"]
+const RAW_COPY_EXTENSIONS : Array = ["gd", "md", "txt", "uid"]
+const REPLACE_CONTENT_EXTENSIONS : Array = ["gd", "tscn", "tres"]
 
 func _get_plugin_name():
 	return PLUGIN_NAME
@@ -52,7 +55,7 @@ func _run_opening_scene(target_path : String):
 		timer.queue_free()
 	timer.timeout.connect(callable)
 	add_child(timer)
-	timer.start(RESAVING_DELAY)
+	timer.start(RUNNING_CHECK_DELAY)
 
 func _delete_directory_recursive(dir_path : String):
 	if not dir_path.ends_with("/"):
@@ -87,8 +90,7 @@ func _delete_source_examples_directory(_target_path : String = ""):
 
 func _replace_file_contents(file_path : String, target_path : String):
 	var extension : String = file_path.get_extension()
-	if extension == "import":
-		# skip import files
+	if extension not in REPLACE_CONTENT_EXTENSIONS:
 		return OK
 	var file = FileAccess.open(file_path, FileAccess.READ)
 	var regex = RegEx.new()
@@ -124,22 +126,9 @@ func _save_resource(resource_path : String, resource_destination : String, white
 		return ERR_FILE_UNRECOGNIZED
 	return OK
 
-func _delayed_reimporting_file(file_path : String):
-	var timer: Timer = Timer.new()
-	var callable := func():
-		timer.stop()
-		var file_system = EditorInterface.get_resource_filesystem()
-		file_system.reimport_files([file_path])
-		timer.queue_free()
-	timer.timeout.connect(callable)
-	add_child(timer)
-	timer.start(REIMPORT_FILE_DELAY)
-
 func _raw_copy_file_path(file_path : String, destination_path : String) -> Error:
 	var dir := DirAccess.open("res://")
 	var error := dir.copy(file_path, destination_path)
-	if not error:
-		EditorInterface.get_resource_filesystem().update_file(destination_path)
 	return error
 
 func _copy_override_file():
@@ -147,17 +136,13 @@ func _copy_override_file():
 	_raw_copy_file_path(override_path, "res://"+override_path.get_file())
 
 func _copy_file_path(file_path : String, destination_path : String, target_path : String, raw_copy_file_extensions : PackedStringArray = []) -> Error:
+	var error : Error
 	if file_path.get_extension() in raw_copy_file_extensions:
-		# Markdown file format
-		return _raw_copy_file_path(file_path, destination_path)
-	var error = _save_resource(file_path, destination_path)
-	if error == ERR_FILE_UNRECOGNIZED:
-		# Copy image files and other assets
 		error = _raw_copy_file_path(file_path, destination_path)
-		# Reimport image files to create new .import
-		if not error:
-			_delayed_reimporting_file(destination_path)
-		return error
+	else:
+		error = _save_resource(file_path, destination_path)
+		if error == ERR_FILE_UNRECOGNIZED:
+			error = _raw_copy_file_path(file_path, destination_path)
 	if not error:
 		_replace_file_contents(destination_path, target_path)
 	return error
@@ -186,13 +171,34 @@ func _copy_directory_path(dir_path : String, target_path : String, raw_copy_file
 	else:
 		push_error("plugin error - accessing path: %s" % dir_path)
 
-func _delayed_saving(target_path : String):
+func _delayed_play_opening_confirmation_dialog(target_path : String):
 	var timer: Timer = Timer.new()
 	var callable := func():
 		timer.stop()
-		EditorInterface.get_resource_filesystem().scan()
-		EditorInterface.save_all_scenes()
 		_open_play_opening_confirmation_dialog(target_path)
+		timer.queue_free()
+	timer.timeout.connect(callable)
+	add_child(timer)
+	timer.start(WINDOW_OPEN_DELAY)
+
+func _wait_for_scan_and_delay_next_prompt(target_path : String):
+	var timer: Timer = Timer.new()
+	var callable := func():
+		if EditorInterface.get_resource_filesystem().is_scanning(): return
+		timer.stop()
+		_delayed_play_opening_confirmation_dialog(target_path)
+		timer.queue_free()
+	timer.timeout.connect(callable)
+	add_child(timer)
+	timer.start(RUNNING_CHECK_DELAY)
+
+func _delayed_saving_and_next_prompt(target_path : String):
+	var timer: Timer = Timer.new()
+	var callable := func():
+		timer.stop()
+		EditorInterface.save_all_scenes()
+		EditorInterface.get_resource_filesystem().scan()
+		_wait_for_scan_and_delay_next_prompt(target_path)
 		timer.queue_free()
 	timer.timeout.connect(callable)
 	add_child(timer)
@@ -212,9 +218,9 @@ func _copy_to_directory(target_path : String):
 	ProjectSettings.save()
 	if not target_path.ends_with("/"):
 		target_path += "/"
-	_copy_directory_path(get_plugin_examples_path(), target_path, ["md"])
+	_copy_directory_path(get_plugin_examples_path(), target_path, RAW_COPY_EXTENSIONS)
 	_copy_override_file()
-	_delayed_saving(target_path)
+	_delayed_saving_and_next_prompt(target_path)
 
 func _open_path_dialog():
 	var destination_scene : PackedScene = load(get_plugin_path() + "installer/destination_dialog.tscn")
@@ -265,8 +271,8 @@ func _remove_copy_tool_if_examples_exists():
 func _enter_tree():
 	add_autoload_singleton("AppConfig", get_plugin_path() + "base/scenes/autoloads/app_config.tscn")
 	_add_copy_tool_if_examples_exists()
-	_show_plugin_dialogues()
 	_add_translations()
+	_show_plugin_dialogues()
 	_resave_if_recently_opened()
 
 func _exit_tree():

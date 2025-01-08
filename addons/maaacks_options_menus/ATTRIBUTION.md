@@ -2,7 +2,7 @@
 ## Collaborators
 
 ### Godot Options Menus
-Author: [Marek Belski and contributors](https://github.com/Maaack/Godot-Options-Menus/graphs/contributors)  
+Author: [Marek Belski](https://github.com/Maaack/Godot-Options-Menus/graphs/contributors)  
 Source: [github: Godot-Options-Menus](https://github.com/Maaack/Godot-Options-Menus)  
 License: [MIT License](LICENSE.txt)  
 
