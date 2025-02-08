@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Options Menus"
 run/main_scene="res://scenes/menus/options_menu/master_options_menu_with_tabs.tscn"
-config/features=PackedStringArray("4.3")
+config/features=PackedStringArray("4.4")
 config/icon="res://icon.png"
 
 [autoload]
