@@ -91,6 +91,10 @@ A copy of the `examples/` directory is made outside of `addons/` when the plugin
 
 [Existing Project Instructions](/addons/maaacks_options_menus/docs/ExistingProject.md)  
 
+## Community
+
+Join the [Discord server](https://discord.gg/AyZrJh5AMp ) and share your work with others. It's also a space for getting or giving feedback, and asking for help. 
+ 
 
 ## Links
 [Attribution](/addons/maaacks_options_menus/ATTRIBUTION.md)  
