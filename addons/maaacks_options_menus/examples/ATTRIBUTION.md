@@ -27,6 +27,6 @@ Source: [git-scm.com](https://git-scm.com/downloads)
 License: [GNU General Public License version 2](https://opensource.org/licenses/GPL-2.0)
 
 #### Godot Options Menus
-Author: [Marek Belski and contributors](https://github.com/Maaack/Godot-Options-Menus/graphs/contributors)  
+Author: [Marek Belski](https://github.com/Maaack/Godot-Options-Menus/graphs/contributors)  
 Source: [github: Godot-Options-Menus](https://github.com/Maaack/Godot-Options-Menus)  
 License: [MIT License](LICENSE.txt)  

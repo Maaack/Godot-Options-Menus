@@ -33,3 +33,8 @@
         1.  Refer to [Accessing Persistent User Data User](https://docs.godotengine.org/en/stable/tutorials/io/data_paths.html#accessing-persistent-user-data-user) to find Godot user data on your machine.
         2.  Find the directory that matches your project's name.  
         3.  `config.cfg` should be in the top directory of the project.
+
+
+3.  Continue with:
+
+    1.  [Adding icons to the Input Options.](/addons/maaacks_options_menus/docs/InputIconMapping.md)  
