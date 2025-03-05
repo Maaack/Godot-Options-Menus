@@ -43,6 +43,7 @@ The `base/` folder holds the core components of the menus application.
 
 Users that want additional features can try [Maaack's Game Template](https://github.com/Maaack/Godot-Game-Template) or other options from the [plugin suite](/addons/maaacks_options_menus/docs/PluginSuite.md).  
 
+
 ## Installation
 
 ### Godot Asset Library
@@ -87,6 +88,7 @@ When editing an existing project:
 ### More Documentation
 
 [Input Icon Mapping](/addons/maaacks_options_menus/docs/InputIconMapping.md)  
+[Joypad Inputs](/addons/maaacks_options_menus/docs/JoypadInputs.md)  
 [How Parts Work](/addons/maaacks_options_menus/docs/HowPartsWork.md)  
 
 ---
