@@ -27,6 +27,12 @@ func get_plugin_path() -> String:
 func get_plugin_examples_path() -> String:
 	return get_plugin_path() + EXAMPLES_RELATIVE_PATH
 
+func get_copy_path() -> String:
+	var copy_path = ProjectSettings.get_setting(PROJECT_SETTINGS_PATH + "copy_path", get_plugin_examples_path())
+	if not copy_path.ends_with("/"):
+		copy_path += "/"
+	return copy_path
+
 func _open_play_opening_confirmation_dialog(target_path : String):
 	var play_confirmation_scene : PackedScene = load(get_plugin_path() + "installer/play_opening_confirmation_dialog.tscn")
 	var play_confirmation_instance : ConfirmationDialog = play_confirmation_scene.instantiate()
@@ -225,6 +231,12 @@ func _copy_to_directory(target_path : String):
 	_copy_override_file()
 	_delayed_saving_and_next_prompt(target_path)
 
+func _open_input_icons_dialog():
+	var input_icons_scene : PackedScene = load(get_plugin_path() + "installer/kenney_input_prompts_installer.tscn")
+	var input_icons_instance = input_icons_scene.instantiate()
+	input_icons_instance.copy_dir_path = get_copy_path()
+	add_child(input_icons_instance)
+
 func _open_path_dialog():
 	var destination_scene : PackedScene = load(get_plugin_path() + "installer/destination_dialog.tscn")
 	var destination_instance : FileDialog = destination_scene.instantiate()
@@ -263,6 +275,7 @@ func _add_copy_tool_if_examples_exists():
 	if dir.dir_exists(examples_path):
 		add_tool_menu_item("Copy " + _get_plugin_name() + " Examples...", _open_path_dialog)
 		add_tool_menu_item("Delete " + _get_plugin_name() + " Examples...", _open_delete_examples_short_confirmation_dialog)
+	add_tool_menu_item("Install Input Icons for " + _get_plugin_name(), _open_input_icons_dialog)
 
 func _remove_copy_tool_if_examples_exists():
 	var examples_path = get_plugin_examples_path()
@@ -270,6 +283,7 @@ func _remove_copy_tool_if_examples_exists():
 	if dir.dir_exists(examples_path):
 		remove_tool_menu_item("Copy " + _get_plugin_name() + " Examples...")
 		remove_tool_menu_item("Delete " + _get_plugin_name() + " Examples...")
+	remove_tool_menu_item("Install Input Icons for " + _get_plugin_name())
 
 func _enter_tree():
 	add_autoload_singleton("AppConfig", get_plugin_path() + "base/scenes/autoloads/app_config.tscn")

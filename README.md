@@ -16,17 +16,20 @@ _Example is of [Maaack's Game Template](https://github.com/Maaack/Godot-Game-Tem
 
 #### Screenshots
 
-![Key Rebinding](/addons/maaacks_options_menus/media/screenshot-3-2.png)  
-![Key Rebinding Confirmation](/addons/maaacks_options_menus/media/screenshot-4-2.png) 
-![Audio Controls](/addons/maaacks_options_menus/media/screenshot-3-4.png)  
-![Video Controls](/addons/maaacks_options_menus/media/screenshot-4-3.png)  
-[More screenshots](/addons/maaacks_options_menus/docs/screenshots.md)
+![Key Rebinding](/addons/maaacks_options_menus/media/screenshot-6-input-list-3.png)  
+![Key Rebinding Icons](/addons/maaacks_options_menus/media/screenshot-6-input-list-1.png)  
+![Key Rebinding Themed](/addons/maaacks_options_menus/media/screenshot-6-input-list-8.png)  
+![Audio Controls](/addons/maaacks_options_menus/media/screenshot-6-audio-options-2.png)  
+![Video Controls](/addons/maaacks_options_menus/media/screenshot-6-video-options-5.png)  
+[More Screenshots](/addons/maaacks_options_menus/docs/Screenshots.md)  
 
 ## Objective
 
 Setup options menus and accessibility features in about 15 minutes.
 
 This addon plugs into an existing project. It is game agnostic (2D or 3D) and can work with multiple target resolutions, up to 4k and down to 640x360. It's meant to cover the needs for a typical game jam, while remaining scalable and extensible enough to support commercial games.
+
+[Maaack's Game Template](https://github.com/Maaack/Godot-Game-Template) is recommended for first time users, especially those new to Godot.  
 
 ## Features
 
