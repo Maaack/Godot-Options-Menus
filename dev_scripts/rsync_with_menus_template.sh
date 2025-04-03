@@ -23,12 +23,14 @@ if [ -z "$source" ]; then
     source="$user_input"
 fi
 
+
 # Source and destination directors
-src_dir="$source/addons/maaacks_menus_template"
-dest_dir="../addons/maaacks_options_menus"
+src_dir="$source/addons/maaacks_menus_template/"
+dest_dir="../addons/maaacks_options_menus/"
 
 echo $src_dir
-rsync -av --existing "$src_dir/" "$dest_dir"
+find $src_dir -type d -empty -o -type f -ctime -10 -printf '%P\0' | rsync -av --files-from=- --from0 "$src_dir" "$dest_dir"
+
 
 # Define strings to replace
 finds=("menus_template" "Menus Template" "Menus-Template" "menus-template")
