@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cqb86gp1gh3y8"
-path="res://.godot/imported/icons-outlined-colored-2x.png-301db7969004486648144245676d1fc0.ctex"
+path="res://.godot/imported/icons-outlined-colored-2x.png-19380e9536cf20d51597d75b1df7f6e8.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://addons/maaacks_options_menus/assets/input-icons/icons-outlined-colored-2x.png"
-dest_files=["res://.godot/imported/icons-outlined-colored-2x.png-301db7969004486648144245676d1fc0.ctex"]
+dest_files=["res://.godot/imported/icons-outlined-colored-2x.png-19380e9536cf20d51597d75b1df7f6e8.ctex"]
 
 [params]
 

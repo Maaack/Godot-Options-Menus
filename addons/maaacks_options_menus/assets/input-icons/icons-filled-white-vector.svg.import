@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c37gofthe2bh3"
-path="res://.godot/imported/icons-filled-white-vector.svg-af17fdef281e2d7e46656a1eea5243e3.ctex"
+path="res://.godot/imported/icons-filled-white-vector.svg-56e8259c5074d433f3476daeef5e5f28.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://addons/maaacks_options_menus/assets/input-icons/icons-filled-white-vector.svg"
-dest_files=["res://.godot/imported/icons-filled-white-vector.svg-af17fdef281e2d7e46656a1eea5243e3.ctex"]
+dest_files=["res://.godot/imported/icons-filled-white-vector.svg-56e8259c5074d433f3476daeef5e5f28.ctex"]
 
 [params]
 
