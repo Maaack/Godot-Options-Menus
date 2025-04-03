@@ -1,7 +1,9 @@
 # Screenshots
 
-![Input Controls](/addons/maaacks_options_menus/media/screenshot-3-2.png)  
-![Key Rebinding](/addons/maaacks_options_menus/media/screenshot-4-1.png)  
-![Key Confirmation](/addons/maaacks_options_menus/media/screenshot-4-2.png)
-![Audio Controls](/addons/maaacks_options_menus/media/screenshot-3-4.png)  
-![Video Controls](/addons/maaacks_options_menus/media/screenshot-4-3.png)  
+
+![Input List](/addons/maaacks_options_menus/media/screenshot-6-input-list-3.png)  
+![Input List](/addons/maaacks_options_menus/media/screenshot-6-input-list-2.png)  
+![Input List](/addons/maaacks_options_menus/media/screenshot-6-input-list-1.png)  
+![Input Tree](/addons/maaacks_options_menus/media/screenshot-6-input-tree-4.png)  
+![Audio Options](/addons/maaacks_options_menus/media/screenshot-6-audio-options-6.png)  
+![Video Options](/addons/maaacks_options_menus/media/screenshot-6-video-options-6.png)  
