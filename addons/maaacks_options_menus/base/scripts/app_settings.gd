@@ -25,17 +25,17 @@ static func get_config_input_events(action_name : String, default = null) -> Arr
 static func set_config_input_events(action_name : String, inputs : Array) -> void:
 	Config.set_config(INPUT_SECTION, action_name, inputs)
 
-static func _clear_config_input_events():
+static func _clear_config_input_events() -> void:
 	Config.erase_section(INPUT_SECTION)
 
-static func remove_action_input_event(action_name : String, input_event : InputEvent):
+static func remove_action_input_event(action_name : String, input_event : InputEvent) -> void:
 	InputMap.action_erase_event(action_name, input_event)
 	var action_events : Array[InputEvent] = InputMap.action_get_events(action_name)
 	var config_events : Array = get_config_input_events(action_name, action_events)
 	config_events.erase(input_event)
 	set_config_input_events(action_name, config_events)
 
-static func set_input_from_config(action_name : String):
+static func set_input_from_config(action_name : String) -> void:
 	var action_events : Array[InputEvent] = InputMap.action_get_events(action_name)
 	var config_events = get_config_input_events(action_name, action_events)
 	if config_events == action_events:
@@ -106,15 +106,15 @@ static func set_mute(mute_flag : bool) -> void:
 static func get_audio_bus_name(bus_iter : int) -> String:
 	return AudioServer.get_bus_name(bus_iter)
 
-static func set_audio_from_config():
+static func set_audio_from_config() -> void:
 	for bus_iter in AudioServer.bus_count:
-		var bus_name : String = get_audio_bus_name(bus_iter)
+		var bus_key : String = get_audio_bus_name(bus_iter).to_pascal_case()
 		var bus_volume : float = get_bus_volume(bus_iter)
 		initial_bus_volumes.append(bus_volume)
-		bus_volume = Config.get_config(AUDIO_SECTION, bus_name, bus_volume)
+		bus_volume = Config.get_config(AUDIO_SECTION, bus_key, bus_volume)
 		if is_nan(bus_volume):
 			bus_volume = 1.0
-			Config.set_config(AUDIO_SECTION, bus_name, bus_volume)
+			Config.set_config(AUDIO_SECTION, bus_key, bus_volume)
 		set_bus_volume(bus_iter, bus_volume)
 	var mute_audio_flag : bool = is_muted()
 	mute_audio_flag = Config.get_config(AUDIO_SECTION, MUTE_SETTING, mute_audio_flag)
@@ -151,7 +151,7 @@ static func set_video_from_config(window : Window) -> void:
 		var current_resolution : Vector2i = get_resolution(window)
 		set_resolution(current_resolution, window)
 
-static func set_vsync(vsync_mode : DisplayServer.VSyncMode, window : Window = null):
+static func set_vsync(vsync_mode : DisplayServer.VSyncMode, window : Window = null) -> void:
 	var window_id : int = 0
 	if window:
 		window_id = window.get_window_id()
