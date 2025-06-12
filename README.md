@@ -8,13 +8,13 @@ _Example is of [Maaack's Game Template](https://github.com/Maaack/Godot-Game-Tem
 
 [Featured Games](#featured-games)  
 
-#### Videos
+### Videos
 
 [![Quick Intro Video](https://img.youtube.com/vi/U9CB3vKINVw/hqdefault.jpg)](https://youtu.be/U9CB3vKINVw)  
 [![Installation Video](https://img.youtube.com/vi/-QWJnZ8bVdk/hqdefault.jpg)](https://youtu.be/-QWJnZ8bVdk)  
 [More Videos](/addons/maaacks_options_menus/docs/Videos.md)
 
-#### Screenshots
+### Screenshots
 
 ![Key Rebinding](/addons/maaacks_options_menus/media/screenshot-6-input-list-3.png)  
 ![Key Rebinding Icons](/addons/maaacks_options_menus/media/screenshot-6-input-list-1.png)  
