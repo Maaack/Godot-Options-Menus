@@ -71,8 +71,9 @@ locale/translations=PackedStringArray("res://addons/maaacks_options_menus/base/t
 
 [maaacks_options_menus]
 
-disable_plugin_dialogues=true
 copy_path="res://"
+disable_update_check=false
+disable_install_wizard=true
 
 [physics]
 
