@@ -1,5 +1,5 @@
 # Godot Options Menus
-For Godot 4.4 (4.2+ compatible)
+For Godot 4.4 (4.3+ compatible)
 
 This plugin has options menus that aim to be easy to customize and persist settings in a user's config file.
 
@@ -94,6 +94,7 @@ When editing an existing project:
 [Input Icon Mapping](/addons/maaacks_options_menus/docs/InputIconMapping.md)  
 [Joypad Inputs](/addons/maaacks_options_menus/docs/JoypadInputs.md)  
 [How Parts Work](/addons/maaacks_options_menus/docs/HowPartsWork.md)  
+[Automatic Updating](/addons/maaacks_options_menus/docs/AutomaticUpdating.md)  
 
 ---
 
