@@ -1,5 +1,9 @@
 @tool
+class_name MaaacksOptionsMenusPlugin
 extends EditorPlugin
+
+const APIClient = preload("res://addons/maaacks_options_menus/utilities/api_client.gd")
+const DownloadAndExtract = preload("res://addons/maaacks_options_menus/utilities/download_and_extract.gd")
 
 const PLUGIN_NAME = "Maaack's Options Menus"
 const PROJECT_SETTINGS_PATH = "maaacks_options_menus/"
