@@ -93,6 +93,7 @@ When editing an existing project:
 
 [Input Icon Mapping](/addons/maaacks_options_menus/docs/InputIconMapping.md)  
 [Joypad Inputs](/addons/maaacks_options_menus/docs/JoypadInputs.md)  
+[Add Custom Options](/addons/maaacks_options_menus/docs/AddingCustomOptions.md)  
 [How Parts Work](/addons/maaacks_options_menus/docs/HowPartsWork.md)  
 [Automatic Updating](/addons/maaacks_options_menus/docs/AutomaticUpdating.md)  
 
