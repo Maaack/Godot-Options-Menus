@@ -38,3 +38,4 @@
 3.  Continue with:
 
     1.  [Adding icons to the Input Options.](/addons/maaacks_options_menus/docs/InputIconMapping.md)  
+    2.  [Adding Custom Options.](/addons/maaacks_options_menus/docs/AddingCustomOptions.md)
