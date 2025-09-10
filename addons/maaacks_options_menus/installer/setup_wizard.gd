@@ -12,10 +12,6 @@ extends AcceptDialog
 @onready var copy_button : Button = %CopyButton
 @onready var delete_check_box : CheckBox = %DeleteCheckBox
 @onready var delete_button : Button = %DeleteButton
-@onready var set_main_scene_check_box : CheckBox = %SetMainSceneCheckBox
-@onready var set_main_scene_button : Button = %SetMainSceneButton
-@onready var set_default_theme_check_box : CheckBox = %SetDefaultThemeCheckBox
-@onready var set_default_theme_button : Button = %SetDefaultThemeButton
 @onready var add_input_icons_check_box : CheckBox = %AddInputIconsCheckBox
 @onready var add_input_icons_button : Button = %AddInputIconsButton
 
@@ -65,17 +61,6 @@ func _refresh_copy_and_delete_examples() -> void:
 	else:
 		delete_check_box.button_pressed = true
 
-func _refresh_main_scene() -> void:
-	if MaaacksOptionsMenusPlugin.instance.is_main_scene_set():
-		set_main_scene_check_box.button_pressed = true
-	else:
-		set_main_scene_button.disabled = false
-
-func _refresh_default_theme() -> void:
-	set_default_theme_button.disabled = false
-	if ProjectSettings.get_setting("gui/theme/custom", "") != "":
-		set_default_theme_check_box.button_pressed = true
-
 func _refresh_input_prompts() -> void:
 	if input_prompts_directory_path.is_empty():
 		push_warning("Variable \"input_prompts_directory_path\" is not set")
@@ -88,8 +73,6 @@ func _refresh_options():
 	_refresh_plugin_details()
 	_open_check_plugin_version()
 	_refresh_copy_and_delete_examples()
-	_refresh_main_scene()
-	_refresh_default_theme()
 	_refresh_input_prompts()
 
 func _ready():
