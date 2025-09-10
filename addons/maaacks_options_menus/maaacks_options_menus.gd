@@ -93,7 +93,7 @@ func _delete_directory_recursive(dir_path : String) -> void:
 		push_error("plugin error - accessing path: %s" % dir)
 	dir.remove(dir_path)
 
-func _delete_source_examples_directory(target_path : String = "") -> void:
+func _delete_source_examples_directory(_target_path : String = "") -> void:
 	var examples_path = get_plugin_examples_path()
 	var dir := DirAccess.open("res://")
 	if dir.dir_exists(examples_path):

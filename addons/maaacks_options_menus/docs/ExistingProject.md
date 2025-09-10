@@ -20,8 +20,7 @@ To revisit any part of the initial setup, find the `Setup Wizard` at `Project > 
     3.  If a new option is desired, refer to [Adding Custom Options.](/addons/maaacks_options_menus/docs/AddingCustomOptions.md)
 
 
-
 3.  Continue with:
 
     1.  [Adding icons to the Input Options.](/addons/maaacks_options_menus/docs/InputIconMapping.md)  
-    5.  [Adding Custom Options.](/addons/maaacks_options_menus/docs/AddingCustomOptions.md)
+    2.  [Adding Custom Options.](/addons/maaacks_options_menus/docs/AddingCustomOptions.md)
