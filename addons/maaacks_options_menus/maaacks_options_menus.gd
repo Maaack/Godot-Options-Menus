@@ -21,7 +21,6 @@ const AVAILABLE_TRANSLATIONS : Array = ["en", "fr"]
 
 static var instance : MaaacksOptionsMenusPlugin
 
-var selected_theme : String
 var update_plugin_tool_string : String
 
 static func get_plugin_name() -> String:
