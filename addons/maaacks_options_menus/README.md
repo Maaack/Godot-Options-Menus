@@ -1,5 +1,5 @@
 # Godot Options Menus
-For Godot 4.4 (4.3+ compatible)
+For Godot 4.5 (4.3+ compatible)
 
 This plugin has options menus that aim to be easy to customize and persist settings in a user's config file.
 

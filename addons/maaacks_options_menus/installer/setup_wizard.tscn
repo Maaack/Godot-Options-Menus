@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://coq26stqrim51" path="res://addons/maaacks_options_menus/installer/setup_wizard.gd" id="1_jck5m"]
 
 [node name="SetupWizardDialog" type="AcceptDialog"]
+oversampling_override = 1.0
 title = "Setup Wizard"
 initial_position = 2
 size = Vector2i(576, 540)

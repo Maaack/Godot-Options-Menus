@@ -52,7 +52,7 @@ func _open_check_plugin_version() -> void:
 
 func _refresh_copy_and_delete_examples() -> void:
 	var examples_path = MaaacksOptionsMenusPlugin.instance.get_plugin_examples_path()
-	if MaaacksOptionsMenusPlugin.instance.get_copy_path() != examples_path:
+	if MaaacksOptionsMenusPlugin.get_copy_path() != examples_path:
 		copy_check_box.button_pressed = true
 	var dir := DirAccess.open("res://")
 	if dir.dir_exists(examples_path):
@@ -93,14 +93,6 @@ func _on_copy_button_pressed():
 
 func _on_delete_button_pressed():
 	tree_exited.connect(func(): MaaacksOptionsMenusPlugin.instance.open_delete_examples_short_confirmation_dialog())
-	queue_free()
-
-func _on_set_main_scene_button_pressed():
-	tree_exited.connect(func(): MaaacksOptionsMenusPlugin.instance.open_main_scene_confirmation_dialog(MaaacksOptionsMenusPlugin.instance.get_copy_path()))
-	queue_free()
-
-func _on_set_default_theme_button_pressed():
-	tree_exited.connect(func(): MaaacksOptionsMenusPlugin.instance.open_theme_selection_dialog(MaaacksOptionsMenusPlugin.instance.get_copy_path()))
 	queue_free()
 
 func _on_add_input_icons_button_pressed():
