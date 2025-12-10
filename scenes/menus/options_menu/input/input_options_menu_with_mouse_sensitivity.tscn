@@ -1,11 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://clot3dkindec"]
+[gd_scene load_steps=3 format=3 uid="uid://hywgsqx270yb"]
 
-[ext_resource type="PackedScene" path="res://addons/maaacks_options_menus/base/scenes/menus/options_menu/input/input_options_menu.tscn" id="1_fthgs"]
-[ext_resource type="Script" path="res://scenes/menus/options_menu/input/input_options_menu.gd" id="2_q5ocm"]
-[ext_resource type="PackedScene" path="res://addons/maaacks_options_menus/base/scenes/menus/options_menu/option_control/slider_option_control.tscn" id="3_xq7mm"]
+[ext_resource type="PackedScene" path="res://addons/maaacks_options_menus/base/nodes/menus/options_menu/input/input_options_menu.tscn" id="1_fwapm"]
+[ext_resource type="PackedScene" path="res://addons/maaacks_options_menus/base/nodes/menus/options_menu/option_control/slider_option_control.tscn" id="2_56ptf"]
 
-[node name="Controls" instance=ExtResource("1_fthgs")]
-script = ExtResource("2_q5ocm")
+[node name="Controls" instance=ExtResource("1_fwapm")]
 
 [node name="VBoxContainer" parent="." index="0"]
 theme_override_constants/separation = 16
@@ -20,7 +18,7 @@ layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="MouseSensitivityControl" parent="VBoxContainer/MarginContainer/VBoxContainer" index="0" instance=ExtResource("3_xq7mm")]
+[node name="MouseSensitivityControl" parent="VBoxContainer/MarginContainer/VBoxContainer" index="0" instance=ExtResource("2_56ptf")]
 layout_mode = 2
 option_name = "Mouse Sensitivity"
 option_section = 1
@@ -39,3 +37,4 @@ tick_count = 8
 layout_mode = 2
 
 [editable path="VBoxContainer/MarginContainer/VBoxContainer/MouseSensitivityControl"]
+[editable path="KeyAssignmentWindow"]

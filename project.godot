@@ -17,7 +17,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-AppConfig="*res://addons/maaacks_options_menus/base/scenes/autoloads/app_config.tscn"
+AppConfig="*res://addons/maaacks_options_menus/base/nodes/autoloads/app_config/app_config.tscn"
 
 [display]
 
