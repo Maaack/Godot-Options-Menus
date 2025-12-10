@@ -101,10 +101,10 @@ When editing an existing project:
 
 ## Featured Games
 
-| Spud Customs | Rent Seek Kill  | A Darkness Like Gravity  |  
+| Baking Godium | Spud Customs | Rent Seek Kill |  
 | :-------:| :-------: | :-------: |
-![Spud Customs](/addons/maaacks_options_menus/media/thumbnail-game-spud-customs.png)  |  ![Rent-Seek-Kill](/addons/maaacks_options_menus/media/thumbnail-game-rent-seek-kill.png)  |  ![A Darkness Like Gravity](/addons/maaacks_options_menus/media/thumbnail-game-a-darkness-like-gravity.png)  |
-[Find on Steam](https://store.steampowered.com/app/3291880/Spud_Customs/) | [Play on itch.io](https://xandruher.itch.io/rent-seek-kill)  |  [Play on itch.io](https://maaack.itch.io/a-darkness-like-gravity)  |
+| ![Baking Godium](/addons/maaacks_options_menus/media/thumbnail-game-baking-godium.png) | ![Spud Customs](/addons/maaacks_options_menus/media/thumbnail-game-spud-customs.png) | ![Rent-Seek-Kill](/addons/maaacks_options_menus/media/thumbnail-game-rent-seek-kill.png) |
+|  [Play on itch.io](https://maaack.itch.io/baking-godium) | [Find on Steam](https://store.steampowered.com/app/3291880/Spud_Customs/) | [Play on itch.io](https://xandruher.itch.io/rent-seek-kill)  |
 
 
 [All Shared Games](/addons/maaacks_options_menus/docs/GamesMade.md)  
