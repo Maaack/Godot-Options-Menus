@@ -6,6 +6,7 @@
 [node name="ConfirmationOverlaidWindow" unique_id=1482267070 instance=ExtResource("1_vfkm2")]
 script = ExtResource("2_sw7p1")
 confirm_button_text = "Confirm"
+ignore_siblings = false
 update_content = true
 title = "Confirm?"
 close_button_text = "Cancel"
