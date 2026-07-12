@@ -1,5 +1,5 @@
 # Godot Options Menus
-For Godot 4.5 (4.3+ compatible)
+For Godot 4.7 (4.3+ compatible)
 
 This plugin has options menus that aim to be easy to customize and persist settings in a user's config file.
 
@@ -11,7 +11,6 @@ _Example is of [Maaack's Game Template](https://github.com/Maaack/Godot-Game-Tem
 ### Videos
 
 [![Quick Intro Video](https://img.youtube.com/vi/U9CB3vKINVw/hqdefault.jpg)](https://youtu.be/U9CB3vKINVw)  
-[![Installation Video](https://img.youtube.com/vi/-QWJnZ8bVdk/hqdefault.jpg)](https://youtu.be/-QWJnZ8bVdk)  
 [More Videos](/addons/maaacks_options_menus/docs/Videos.md)
 
 ### Screenshots
@@ -50,14 +49,14 @@ Users that want additional features can try [Maaack's Game Template](https://git
 
 ## Installation
 
-### Godot Asset Library
+### Godot Asset Store & Library
 This package is available as a plugin, meaning it can be added to an existing project. 
 
 ![Package Icon](/addons/maaacks_options_menus/media/options-icon-black-transparent-256x256.png)  
 
 When editing an existing project:
 
-1.  Go to the `AssetLib` tab.
+1.  Go to the `Asset Store` tab.
 2.  Search for "Maaack's Options Menus".
 3.  Click on the result to open the plugin details.
 4.  Click to Download.
@@ -65,9 +64,9 @@ When editing an existing project:
 6.  Click to Install.
 7.  Reload the project (you may see errors before you do this).
 8.  Enable the plugin from the Project Settings > Plugins tab.  
-    If it's enabled for the first time,
-    1.  A dialogue window will appear asking to copy the example scenes out of `addons/`.
-9.  Continue with the [Existing Project Instructions](/addons/maaacks_options_menus/docs/ExistingProject.md)  
+    1.  If it's enabled for the first time, the setup wizard will start.  
+    2.  Close the window behind it and complete the setup wizard.  
+9.  Continue with the [Basic Setup](/addons/maaacks_options_menus/docs/BasicSetup.md)
 
 
 ### GitHub
@@ -78,22 +77,22 @@ When editing an existing project:
 3.  Move the `addons/maaacks_options_menus` folder into your project's `addons/` folder.  
 4.  Open/Reload the project.  
 5.  Enable the plugin from the Project Settings > Plugins tab.  
-    If it's enabled for the first time,
-    1.  A dialogue window will appear asking to copy the example scenes out of `addons/`.
-6.  Continue with the [Existing Project Instructions](/addons/maaacks_options_menus/docs/ExistingProject.md) 
+    1.  If it's enabled for the first time, the setup wizard will start.  
+    2.  Close the window behind it and complete the setup wizard.  
+6.  Continue with the [Basic Setup](/addons/maaacks_options_menus/docs/BasicSetup.md)
 
 
 ## Usage
 
-### Existing Project
+[Basic Setup](/addons/maaacks_options_menus/docs/BasicSetup.md) is done through the _Setup Wizard_ at `Project > Tools > Run Maaack's Options Menus Setup...`.
 
-[Existing Project Instructions](/addons/maaacks_options_menus/docs/ExistingProject.md)  
+As part of setup, example scenes are copied out of `/addons/` into a desired folder (project root by default). These can be edited to fit requirements.
    
 ### More Documentation
 
+[Options Menu Setup](/addons/maaacks_game_template/docs/OptionsMenuSetup.md)  
 [Input Icon Mapping](/addons/maaacks_options_menus/docs/InputIconMapping.md)  
 [Joypad Inputs](/addons/maaacks_options_menus/docs/JoypadInputs.md)  
-[Add Custom Options](/addons/maaacks_options_menus/docs/AddingCustomOptions.md)  
 [How Parts Work](/addons/maaacks_options_menus/docs/HowPartsWork.md)  
 [Automatic Updating](/addons/maaacks_options_menus/docs/AutomaticUpdating.md)  
 
@@ -101,10 +100,10 @@ When editing an existing project:
 
 ## Featured Games
 
-| Baking Godium | Spud Customs | Rent Seek Kill |  
+| HeartFix Express | Baking Godium | Rent Seek Kill |  
 | :-------:| :-------: | :-------: |
-| ![Baking Godium](/addons/maaacks_options_menus/media/thumbnail-game-baking-godium.png) | ![Spud Customs](/addons/maaacks_options_menus/media/thumbnail-game-spud-customs.png) | ![Rent-Seek-Kill](/addons/maaacks_options_menus/media/thumbnail-game-rent-seek-kill.png) |
-|  [Play on itch.io](https://maaack.itch.io/baking-godium) | [Find on Steam](https://store.steampowered.com/app/3291880/Spud_Customs/) | [Play on itch.io](https://xandruher.itch.io/rent-seek-kill)  |
+| ![HeartFix Express](/addons/maaacks_options_menus/media/thumbnail-game-heartfix-express.png) | ![Baking Godium](/addons/maaacks_options_menus/media/thumbnail-game-baking-godium.png) | ![Rent-Seek-Kill](/addons/maaacks_options_menus/media/thumbnail-game-rent-seek-kill.png) |
+|  [Find on Steam](https://store.steampowered.com/app/3983290/HeartFix_Express_Demo/)  | [Play on itch.io](https://maaack.itch.io/baking-godium) | [Play on itch.io](https://xandruher.itch.io/rent-seek-kill)  |
 
 
 [All Shared Games](/addons/maaacks_options_menus/docs/GamesMade.md)  
@@ -118,4 +117,5 @@ Join the [Discord server](https://discord.gg/AyZrJh5AMp ) and share your work wi
 ## Links
 [Attribution](/addons/maaacks_options_menus/ATTRIBUTION.md)  
 [License](/addons/maaacks_options_menus/LICENSE.txt)  
-[Godot Asset Library - Plugin](https://godotengine.org/asset-library/asset/3058) 
+[Godot Asset Store](https://store.godotengine.org/asset/maaack/maaacks-options-menus/)  
+[Godot Asset Library](https://godotengine.org/asset-library/asset/3058)  
