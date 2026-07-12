@@ -1,5 +1,8 @@
 # Existing Project
 
+> [!WARNING]  
+> This page is being deprecated in favor of [Basic Setup](/addons/maaacks_options_menus/docs/BasicSetup.md).
+
 To revisit any part of the initial setup, find the `Setup Wizard` at `Project > Tools > Run Maaack's Options Menus Setup...`. Example files can be re-copied from the `Setup Wizard`, assuming they have not been deleted.
 
 1.  Add readable names for input actions to the controls menu.

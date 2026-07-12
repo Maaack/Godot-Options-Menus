@@ -55,15 +55,18 @@ func open_setup_complete_dialog(_target_path : String) -> void:
 	setup_complete_instance.visibility_changed.connect(_on_visibility_changed_to_hidden.bind(setup_complete_instance))
 	add_child(setup_complete_instance)
 
-func _delayed_open_setup_complete_dialog(target_path : String) -> void:
+func _delayed_call_with_path(callable : Callable, target_path : String) -> void:
 	var timer: Timer = Timer.new()
-	var callable := func():
+	var timer_callable := func():
 		timer.stop()
-		open_setup_complete_dialog(target_path)
+		callable.call(target_path)
 		timer.queue_free()
-	timer.timeout.connect(callable)
+	timer.timeout.connect(timer_callable)
 	add_child(timer)
 	timer.start(WINDOW_OPEN_DELAY)
+
+func _delayed_open_setup_complete_dialog(target_path : String) -> void:
+	_delayed_call_with_path(open_setup_complete_dialog, target_path)
 
 func _open_play_opening_confirmation_dialog(target_path : String) -> void:
 	var play_confirmation_scene : PackedScene = load(get_plugin_path() + "installer/play_opening_confirmation_dialog.tscn")
@@ -95,7 +98,7 @@ func _run_opening_scene(target_path : String) -> void:
 	var callable := func() -> void:
 		if EditorInterface.is_playing_scene(): return
 		timer.stop()
-		_open_delete_examples_confirmation_dialog(target_path)
+		_delayed_call_with_path(_open_delete_examples_confirmation_dialog, target_path)
 		timer.queue_free()
 	timer.timeout.connect(callable)
 	add_child(timer)
