@@ -87,7 +87,7 @@ When editing an existing project:
 [Basic Setup](/addons/maaacks_options_menus/docs/BasicSetup.md) is done through the _Setup Wizard_ at `Project > Tools > Run Maaack's Options Menus Setup...`.
 
 As part of setup, example scenes are copied out of `/addons/` into a desired folder (project root by default). These can be edited to fit requirements.
-   
+  
 ### More Documentation
 
 [Options Menu Setup](/addons/maaacks_game_template/docs/OptionsMenuSetup.md)  

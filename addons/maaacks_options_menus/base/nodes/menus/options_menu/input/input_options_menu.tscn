@@ -72,7 +72,6 @@ text = "Are you sure you want to reset controls back to the defaults?"
 visible = false
 custom_minimum_size = Vector2(420, 200)
 layout_mode = 2
-ignore_siblings = false
 update_content = true
 title = "One Input Minimum"
 
@@ -80,7 +79,6 @@ title = "One Input Minimum"
 visible = false
 custom_minimum_size = Vector2(420, 200)
 layout_mode = 2
-ignore_siblings = false
 update_content = true
 title = "Already Assigned"
 
