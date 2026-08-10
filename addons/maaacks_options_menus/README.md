@@ -1,7 +1,10 @@
 # Godot Options Menus
-For Godot 4.7 (4.3+ compatible)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/Maaack/Godot-Options-Menus) ![GitHub Release Date](https://img.shields.io/github/release-date/Maaack/Godot-Options-Menus)
+[![Discord members](https://img.shields.io/discord/772191827570720798.svg?label=&logo=discord&logoColor=ffffff)](https://discord.gg/AyZrJh5AMp)  
 
 This plugin has options menus that aim to be easy to customize and persist settings in a user's config file.
+
+For Godot 4.7 (4.3+ compatible)
 
 [Example on itch.io](https://maaack.itch.io/godot-game-template)  
 _Example is of [Maaack's Game Template](https://github.com/Maaack/Godot-Game-Template), which includes additional features._
@@ -16,10 +19,8 @@ _Example is of [Maaack's Game Template](https://github.com/Maaack/Godot-Game-Tem
 ### Screenshots
 
 ![Key Rebinding](/addons/maaacks_options_menus/media/screenshot-6-input-list-3.png)  
-![Key Rebinding Icons](/addons/maaacks_options_menus/media/screenshot-6-input-list-1.png)  
 ![Key Rebinding Themed](/addons/maaacks_options_menus/media/screenshot-6-input-list-8.png)  
 ![Audio Controls](/addons/maaacks_options_menus/media/screenshot-6-audio-options-2.png)  
-![Video Controls](/addons/maaacks_options_menus/media/screenshot-6-video-options-5.png)  
 [More Screenshots](/addons/maaacks_options_menus/docs/Screenshots.md)  
 
 ## Objective
@@ -87,7 +88,7 @@ When editing an existing project:
 [Basic Setup](/addons/maaacks_options_menus/docs/BasicSetup.md) is done through the _Setup Wizard_ at `Project > Tools > Run Maaack's Options Menus Setup...`.
 
 As part of setup, example scenes are copied out of `/addons/` into a desired folder (project root by default). These can be edited to fit requirements.
-   
+
 ### More Documentation
 
 [Options Menu Setup](/addons/maaacks_game_template/docs/OptionsMenuSetup.md)  
@@ -111,8 +112,8 @@ As part of setup, example scenes are copied out of `/addons/` into a desired fol
 
 ## Community
 
-Join the [Discord server](https://discord.gg/AyZrJh5AMp ) and share your work with others. It's also a space for getting or giving feedback, and asking for help. 
- 
+Join the [Discord server](https://discord.gg/AyZrJh5AMp) and share your work with others. It's also a space for getting or giving feedback, and asking for help. 
+
 
 ## Links
 [Attribution](/addons/maaacks_options_menus/ATTRIBUTION.md)  
