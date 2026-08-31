@@ -15,10 +15,6 @@ run/main_scene="res://scenes/menus/options_menu/master_options_menu_with_tabs.ts
 config/features=PackedStringArray("4.7")
 config/icon="res://icon.png"
 
-[autoload]
-
-AppConfig="*res://addons/maaacks_options_menus/base/nodes/autoloads/app_config/app_config.tscn"
-
 [display]
 
 window/size/viewport_width=1280
@@ -26,7 +22,7 @@ window/size/viewport_height=720
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/maaacks_options_menus/plugin.cfg")
+enabled=PackedStringArray("res://addons/maaacks_options_menus/plugin.cfg", "res://addons/plugin_updater/plugin.cfg")
 
 [gui]
 
@@ -78,6 +74,13 @@ disable_install_wizard=true
 [physics]
 
 common/enable_pause_aware_picking=true
+
+[plugin_updater]
+
+plugins={
+"res://addons/maaacks_options_menus/": "https://github.com/Maaack/Godot-Options-Menus",
+"res://addons/plugin_updater/": "https://github.com/Maaack/Godot-Plugin-Updater"
+}
 
 [rendering]
 

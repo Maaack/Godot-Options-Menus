@@ -2,48 +2,26 @@
 class_name MaaacksOptionsMenusPlugin
 extends EditorPlugin
 
-const PLUGIN_PATH = "res://addons/maaacks_options_menus/"
-const PLUGIN_NAME = "Maaack's Options Menus"
-const PROJECT_SETTINGS_PATH = "maaacks_options_menus/"
-
-const APIClient = preload(PLUGIN_PATH + "utilities/api_client.gd")
-const DownloadAndExtract = preload(PLUGIN_PATH + "utilities/download_and_extract.gd")
-const CopyAndEdit = preload(PLUGIN_PATH + "installer/copy_and_edit_files.gd")
-
+const PLUGIN_REPO_URL = "https://github.com/Maaack/Godot-Options-Menus"
 const EXAMPLES_RELATIVE_PATH = "examples/"
-const MAIN_SCENE_RELATIVE_PATH = "scenes/menus/options_menu/master_options_menu_with_tabs.tscn"
 const OVERRIDE_RELATIVE_PATH = "installer/override.cfg"
-const APP_CONFIG_RELATIVE_PATH = "base/nodes/autoloads/app_config/app_config.tscn"
 const WINDOW_OPEN_DELAY : float = 0.5
 const RUNNING_CHECK_DELAY : float = 0.25
 const OPEN_EDITOR_DELAY : float = 0.1
 const MAX_PHYSICS_FRAMES_FROM_START : int = 60
 const AVAILABLE_TRANSLATIONS : Array = ["en", "fr"]
+const CopyAndEdit = preload("installer/copy_and_edit_files.gd")
 
 static var instance : MaaacksOptionsMenusPlugin
 
-var update_plugin_tool_string : String
+func get_plugin_path() -> String:
+	return get_script().resource_path.get_base_dir() + "/"
 
-static func get_plugin_name() -> String:
-	return PLUGIN_NAME
-
-static func get_settings_path() -> String:
-	return PROJECT_SETTINGS_PATH
-
-static func get_plugin_path() -> String:
-	return PLUGIN_PATH
-
-static func get_plugin_examples_path() -> String:
+func get_plugin_examples_path() -> String:
 	return get_plugin_path() + EXAMPLES_RELATIVE_PATH
 
-static func get_app_config_path() -> String:
-	return get_plugin_path() + APP_CONFIG_RELATIVE_PATH
-
-static func get_copy_path() -> String:
-	var copy_path = ProjectSettings.get_setting(PROJECT_SETTINGS_PATH + "copy_path", get_plugin_examples_path())
-	if not copy_path.ends_with("/"):
-		copy_path += "/"
-	return copy_path
+func get_copy_path() -> String:
+	return MaaacksOptionsMenus.get_copy_path(get_plugin_examples_path())
 
 func _on_visibility_changed_to_hidden(dialog_window : Window) -> void:
 	if dialog_window and dialog_window.is_inside_tree() and not dialog_window.visible:
@@ -85,14 +63,16 @@ func _open_delete_examples_confirmation_dialog(target_path : String) -> void:
 	add_child(delete_confirmation_instance)
 
 func open_delete_examples_short_confirmation_dialog() -> void:
+	var copy_path := get_copy_path()
 	var delete_confirmation_scene : PackedScene = load(get_plugin_path() + "installer/delete_examples_short_confirmation_dialog.tscn")
 	var delete_confirmation_instance : ConfirmationDialog = delete_confirmation_scene.instantiate()
-	delete_confirmation_instance.confirmed.connect(_delete_source_examples_directory)
+	delete_confirmation_instance.confirmed.connect(_delete_source_examples_directory.bind(copy_path))
+	delete_confirmation_instance.canceled.connect(_delayed_call_with_path.bind(open_setup_wizard, copy_path))
 	delete_confirmation_instance.visibility_changed.connect(_on_visibility_changed_to_hidden.bind(delete_confirmation_instance))
 	add_child(delete_confirmation_instance)
 
 func _run_opening_scene(target_path : String) -> void:
-	var opening_scene_path = target_path + MAIN_SCENE_RELATIVE_PATH
+	var opening_scene_path = target_path + MaaacksOptionsMenus.get_main_scene_relative_path()
 	EditorInterface.play_custom_scene(opening_scene_path)
 	var timer: Timer = Timer.new()
 	var callable := func() -> void:
@@ -154,8 +134,7 @@ func _add_translations() -> void:
 	ProjectSettings.set_setting("internationalization/locale/translations", translations)
 
 func _on_completed_copy_to_directory(target_path : String) -> void:
-	ProjectSettings.set_setting(PROJECT_SETTINGS_PATH + "copy_path", target_path)
-	ProjectSettings.save()
+	MaaacksOptionsMenus.set_copy_path(target_path)
 	_copy_override_file()
 	_open_play_opening_confirmation_dialog(target_path)
 
@@ -164,7 +143,7 @@ func are_examples_deleted() -> bool:
 	return not dir.dir_exists(get_plugin_examples_path())
 
 func is_partially_installed() -> bool:
-	var copy_path : String = ProjectSettings.get_setting(PROJECT_SETTINGS_PATH + "copy_path")
+	var copy_path : String = MaaacksOptionsMenus.get_copy_path()
 	if copy_path.is_empty():
 		# Installation not started
 		return false
@@ -200,44 +179,16 @@ func _open_continue_setup_dialog() -> void:
 	confirmation_instance.visibility_changed.connect(_on_visibility_changed_to_hidden.bind(confirmation_instance))
 	add_child(confirmation_instance)
 
-func _open_check_plugin_version() -> void:
-	if ProjectSettings.has_setting(PROJECT_SETTINGS_PATH + "disable_update_check"):
-		if ProjectSettings.get_setting(PROJECT_SETTINGS_PATH + "disable_update_check"):
-			return
-	else:
-		ProjectSettings.set_setting(PROJECT_SETTINGS_PATH + "disable_update_check", false)
-		ProjectSettings.save()
-	var check_version_scene : PackedScene = load(get_plugin_path() + "installer/check_plugin_version.tscn")
-	var check_version_instance : Node = check_version_scene.instantiate()
-	check_version_instance.auto_start = true
-	check_version_instance.new_version_detected.connect(_add_update_plugin_tool_option)
-	add_child(check_version_instance)
-
-func open_update_plugin() -> void:
-	var update_plugin_scene : PackedScene = load(get_plugin_path() + "installer/update_plugin.tscn")
-	var update_plugin_instance : Node = update_plugin_scene.instantiate()
-	update_plugin_instance.auto_start = true
-	update_plugin_instance.update_completed.connect(_remove_update_plugin_tool_option)
-	add_child(update_plugin_instance)
-
-func open_setup_wizard() -> void:
+func open_setup_wizard(_target_path: String = "") -> void:
 	var setup_wizard_scene : PackedScene = load(get_plugin_path() + "installer/setup_wizard.tscn")
 	var setup_wizard_instance : Node = setup_wizard_scene.instantiate()
 	add_child(setup_wizard_instance)
 
-func _add_update_plugin_tool_option(new_version : String) -> void:
-	update_plugin_tool_string = "Update %s to v%s..." % [get_plugin_name(), new_version]
-	add_tool_menu_item(update_plugin_tool_string, open_update_plugin)
-
-func _remove_update_plugin_tool_option() -> void:
-	if update_plugin_tool_string.is_empty(): return
-	remove_tool_menu_item(update_plugin_tool_string)
-	update_plugin_tool_string = ""
-
 func _show_plugin_dialogues() -> void:
-	if not ProjectSettings.get_setting(PROJECT_SETTINGS_PATH + "disable_install_wizard", false):
+	var setting_key := MaaacksOptionsMenus.get_settings_path() + "disable_install_wizard"
+	if not ProjectSettings.get_setting(setting_key, false):
 		_open_confirmation_dialog()
-		ProjectSettings.set_setting(PROJECT_SETTINGS_PATH + "disable_install_wizard", true)
+		ProjectSettings.set_setting(setting_key, true)
 		ProjectSettings.save()
 		return
 	if is_partially_installed():
@@ -257,18 +208,22 @@ func _resave_if_recently_opened() -> void:
 		timer.start(OPEN_EDITOR_DELAY)
 
 func _add_tool_options() -> void:
-	add_tool_menu_item("Run " + get_plugin_name() + " Setup...", open_setup_wizard)
-	_open_check_plugin_version()
+	add_tool_menu_item("Run " + MaaacksOptionsMenus.get_plugin_name() + " Setup...", open_setup_wizard)
 
 func _remove_tool_options() -> void:
-	remove_tool_menu_item("Run " + get_plugin_name() + " Setup...")
-	_remove_update_plugin_tool_option()
+	remove_tool_menu_item("Run " + MaaacksOptionsMenus.get_plugin_name() + " Setup...")
+
+func _add_to_auto_update_list() -> void:
+	PluginUpdater.add_plugin(get_plugin_path(), PLUGIN_REPO_URL)
+
+func _remove_from_auto_update_list() -> void:
+	PluginUpdater.remove_plugin(get_plugin_path())
 
 func _enable_plugin():
-	add_autoload_singleton("AppConfig", get_app_config_path())
+	_add_to_auto_update_list()
 
 func _disable_plugin():
-	remove_autoload_singleton("AppConfig")
+	_remove_from_auto_update_list()
 
 func _enter_tree() -> void:
 	_add_tool_options()
