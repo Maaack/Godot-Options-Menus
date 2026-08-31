@@ -26,7 +26,7 @@ window/size/viewport_height=720
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/maaacks_options_menus/plugin.cfg")
+enabled=PackedStringArray("res://addons/maaacks_options_menus/plugin.cfg", "res://addons/plugin_updater/plugin.cfg")
 
 [gui]
 
@@ -78,6 +78,13 @@ disable_install_wizard=true
 [physics]
 
 common/enable_pause_aware_picking=true
+
+[plugin_updater]
+
+plugins={
+"res://addons/maaacks_options_menus/": "https://github.com/Maaack/Godot-Options-Menus",
+"res://addons/plugin_updater/": "https://github.com/Maaack/Godot-Plugin-Updater"
+}
 
 [rendering]
 
