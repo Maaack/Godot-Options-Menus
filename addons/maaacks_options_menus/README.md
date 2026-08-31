@@ -1,4 +1,4 @@
-![Package Icon](/addons/maaacks_options_menus/media/menus-icon-black-transparent-256x256.png)  
+![Package Icon](/addons/maaacks_options_menus/media/options-icon-black-transparent-256x256.png)  
 
 # Godot Options Menus
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/Maaack/Godot-Options-Menus)
