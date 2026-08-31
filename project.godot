@@ -15,10 +15,6 @@ run/main_scene="res://scenes/menus/options_menu/master_options_menu_with_tabs.ts
 config/features=PackedStringArray("4.7")
 config/icon="res://icon.png"
 
-[autoload]
-
-AppConfig="*res://addons/maaacks_options_menus/base/nodes/autoloads/app_config/app_config.tscn"
-
 [display]
 
 window/size/viewport_width=1280

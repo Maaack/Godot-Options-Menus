@@ -13,12 +13,6 @@ extends AcceptDialog
 @onready var copy_button : Button = %CopyButton
 @onready var delete_check_box : CheckBox = %DeleteCheckBox
 @onready var delete_button : Button = %DeleteButton
-@onready var update_paths_check_box : CheckBox = %UpdatePathsCheckBox
-@onready var update_paths_button : Button = %UpdatePathsButton
-@onready var set_main_scene_check_box : CheckBox = %SetMainSceneCheckBox
-@onready var set_main_scene_button : Button = %SetMainSceneButton
-@onready var set_default_theme_check_box : CheckBox = %SetDefaultThemeCheckBox
-@onready var set_default_theme_button : Button = %SetDefaultThemeButton
 @onready var add_input_icons_check_box : CheckBox = %AddInputIconsCheckBox
 @onready var add_input_icons_button : Button = %AddInputIconsButton
 @onready var issues_link_label = %IssuesLink
