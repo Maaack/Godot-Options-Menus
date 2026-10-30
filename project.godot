@@ -15,6 +15,11 @@ run/main_scene="res://scenes/menus/options_menu/master_options_menu_with_tabs.ts
 config/features=PackedStringArray("4.7")
 config/icon="res://icon.png"
 
+[clean_copy_examples]
+
+examples_paths=Array[String](["res://addons/maaacks_options_menus/examples/"])
+copy_path="res://"
+
 [display]
 
 window/size/viewport_width=1280
