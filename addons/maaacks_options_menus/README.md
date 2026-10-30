@@ -17,6 +17,8 @@ Setup options menus and accessibility features in about 15 minutes.
 
 This addon plugs into an existing project. It is game agnostic (2D or 3D) and can work with multiple target resolutions, up to 4k and down to 640x360. It's meant to cover the needs for a typical game jam, while remaining scalable and extensible enough to support commercial games.
 
+This addon was originally made for Godot Wild Jam, and shares a no AI/LLM-gen policy. Please open an [issue](https://github.com/Maaack/Godot-Options-Menus/issues) if there is a violation.  
+
 ### Extras or Components
 
 Users that want additional features can try [Maaack's Game Template](https://github.com/Maaack/Godot-Game-Template) or other options from the [plugin suite](/addons/maaacks_options_menus/docs/PluginSuite.md).  
@@ -72,11 +74,10 @@ As part of setup, example scenes are copied out of `/addons/` into a desired fol
 
 ## Featured Games
 
-| HeartFix Express | Baking Godium | Rent Seek Kill |  
+| Crumbling Castle | Dungeon Bodega Simulator | Lucky Break |  
 | :-------:| :-------: | :-------: |
-| ![HeartFix Express](/addons/maaacks_options_menus/media/thumbnail-game-heartfix-express.png) | ![Baking Godium](/addons/maaacks_options_menus/media/thumbnail-game-baking-godium.png) | ![Rent-Seek-Kill](/addons/maaacks_options_menus/media/thumbnail-game-rent-seek-kill.png) |
-|  [Find on Steam](https://store.steampowered.com/app/3983290/HeartFix_Express_Demo/)  | [Play on itch.io](https://maaack.itch.io/baking-godium) | [Play on itch.io](https://xandruher.itch.io/rent-seek-kill)  |
-
+| ![Crumbling Castle](/addons/maaacks_options_menus/media/thumbnail-game-crumbling-castle.png) | ![Dungeon Bodega Simulator](/addons/maaacks_options_menus/media/thumbnail-game-dungeon-bodega-simulator.png) | ![Lucky Break](/addons/maaacks_options_menus/media/thumbnail-game-lucky-break.png) |
+| [Play on itch.io](https://maaack.itch.io/crumbling-castle) |  [Find on Steam](https://store.steampowered.com/app/3458180/Dungeon_Bodega_Simulator/)  | [Play on Steam](https://store.steampowered.com/app/4155880/Lucky_Break/)  |
 
 [All Shared Games](/addons/maaacks_options_menus/docs/GamesMade.md)  
 
