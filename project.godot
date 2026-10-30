@@ -18,6 +18,7 @@ config/icon="res://icon.png"
 [clean_copy_examples]
 
 examples_paths=Array[String](["res://addons/maaacks_options_menus/examples/"])
+copy_path="res://"
 
 [display]
 
