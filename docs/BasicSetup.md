@@ -31,5 +31,5 @@ The remaining steps are optional customizations.
 1.  [Options Menu Setup](/docs/OptionsMenuSetup.md)  
 
 ### Extra
-1.  [Input Icon Mapping](/addons/maaacks_game_template/docs/InputIconMapping.md)  
-2.  [Joypad Inputs](/addons/maaacks_game_template/docs/JoypadInputs.md)  
+1.  [Input Icon Mapping](/docs/InputIconMapping.md)  
+2.  [Joypad Inputs](/docs/JoypadInputs.md)  

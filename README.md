@@ -52,7 +52,7 @@ As part of setup, example scenes are copied out of `/addons/` into a desired fol
 
 ### More Documentation
 
-[Options Menu Setup](/addons/maaacks_game_template/docs/OptionsMenuSetup.md)  
+[Options Menu Setup](/docs/OptionsMenuSetup.md)  
 [Input Icon Mapping](/docs/InputIconMapping.md)  
 [Joypad Inputs](/docs/JoypadInputs.md)  
 [How Parts Work](/docs/HowPartsWork.md)  
