@@ -1,7 +1,7 @@
 # Existing Project
 
 > [!WARNING]  
-> This page is being deprecated in favor of [Basic Setup](/addons/maaacks_options_menus/docs/BasicSetup.md).
+> This page is being deprecated in favor of [Basic Setup](/docs/BasicSetup.md).
 
 To revisit any part of the initial setup, find the `Setup Wizard` at `Project > Tools > Run Maaack's Options Menus Setup...`. Example files can be re-copied from the `Setup Wizard`, assuming they have not been deleted.
 
@@ -20,10 +20,10 @@ To revisit any part of the initial setup, find the `Setup Wizard` at `Project > 
 
     1.  Open `mini_options_menu.tscn` or `[audio|visual|input|game]_options_menu.tscn` scenes to edit their options.
     2.  If an option is not desired, it can always be hidden, or removed entirely (sometimes with some additional work).
-    3.  If a new option is desired, refer to [Adding Custom Options.](/addons/maaacks_options_menus/docs/AddingCustomOptions.md)
+    3.  If a new option is desired, refer to [Adding Custom Options.](/docs/AddingCustomOptions.md)
 
 
 3.  Continue with:
 
-    1.  [Adding icons to the Input Options.](/addons/maaacks_options_menus/docs/InputIconMapping.md)  
-    2.  [Adding Custom Options.](/addons/maaacks_options_menus/docs/AddingCustomOptions.md)
+    1.  [Adding icons to the Input Options.](/docs/InputIconMapping.md)  
+    2.  [Adding Custom Options.](/docs/AddingCustomOptions.md)
