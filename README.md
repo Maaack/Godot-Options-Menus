@@ -25,7 +25,7 @@ Users that want additional features can try [Maaack's Game Template](https://git
 
 ## Installation
 
-*Maaack's Options Menus* is available in both the *Godot Asset Library* and the *Godot Asset Store*. It is available as a plugin, meaning it can be added to an existing project. 
+*Maaack's Options Menus* is available in both the *Godot Asset Library* and the *Godot Asset Store*. It is available as a plugin, meaning it can be added to an existing project.
 
 ### Existing Project
 While editing a project in *Godot*:
@@ -53,6 +53,7 @@ As part of setup, example scenes are copied out of `/addons/` into a desired fol
 ### More Documentation
 
 [Options Menu Setup](/docs/OptionsMenuSetup.md)  
+[Input Remapping Menus](/docs/InputRemappingMenus.md)  
 [Input Icon Mapping](/docs/InputIconMapping.md)  
 [Joypad Inputs](/docs/JoypadInputs.md)  
 [How Parts Work](/docs/HowPartsWork.md)  
