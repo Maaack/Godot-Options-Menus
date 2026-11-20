@@ -15,6 +15,10 @@ run/main_scene="res://scenes/menus/options_menu/master_options_menu_with_tabs.ts
 config/features=PackedStringArray("4.7")
 config/icon="res://icon.png"
 
+[audio]
+
+buses/default_bus_layout="uid://dlo5inop6ahho"
+
 [clean_copy_examples]
 
 examples_paths=Array[String](["res://addons/maaacks_options_menus/examples/"])
