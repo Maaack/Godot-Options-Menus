@@ -1,4 +1,4 @@
-![Package Icon](/addons/maaacks_options_menus/media/options-icon-black-transparent-256x256.png)  
+![Package Icon](/media/options-icon-black-transparent-256x256.png)  
 
 # Godot Options Menus
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/Maaack/Godot-Options-Menus)
@@ -21,11 +21,11 @@ This addon was originally made for Godot Wild Jam, and shares a no AI/LLM-gen po
 
 ### Extras or Components
 
-Users that want additional features can try [Maaack's Game Template](https://github.com/Maaack/Godot-Game-Template) or other options from the [plugin suite](/addons/maaacks_options_menus/docs/PluginSuite.md).  
+Users that want additional features can try [Maaack's Game Template](https://github.com/Maaack/Godot-Game-Template) or other options from the [plugin suite](/docs/PluginSuite.md).  
 
 ## Installation
 
-*Maaack's Options Menus* is available in both the *Godot Asset Library* and the *Godot Asset Store*. It is available as a plugin, meaning it can be added to an existing project. 
+*Maaack's Options Menus* is available in both the *Godot Asset Library* and the *Godot Asset Store*. It is available as a plugin, meaning it can be added to an existing project.
 
 ### Existing Project
 While editing a project in *Godot*:
@@ -42,45 +42,45 @@ Conflicts that are safe to ignore:
 8.  Enable the plugin from the **Project > Project Settings > Plugins** tab.  
     1.  If it's enabled for the first time, the setup wizard will start.  
     2.  Close the window behind it and complete the setup wizard.  
-9.  Continue with the [Basic Setup](/addons/maaacks_options_menus/docs/BasicSetup.md).
+9.  Continue with the [Basic Setup](/docs/BasicSetup.md).
 
 ## Usage
 
-[Basic Setup](/addons/maaacks_options_menus/docs/BasicSetup.md) is done through the setup wizard at **Project > Tools > Run Maaack's Options Menus Setup...**.  
+[Basic Setup](/docs/BasicSetup.md) is done through the setup wizard at **Project > Tools > Run Maaack's Options Menus Setup...**.  
 
 As part of setup, example scenes are copied out of `/addons/` into a desired folder (project root by default). These can be edited to fit requirements.
 
 ### More Documentation
 
-[Options Menu Setup](/addons/maaacks_game_template/docs/OptionsMenuSetup.md)  
-[Input Icon Mapping](/addons/maaacks_options_menus/docs/InputIconMapping.md)  
-[Joypad Inputs](/addons/maaacks_options_menus/docs/JoypadInputs.md)  
-[How Parts Work](/addons/maaacks_options_menus/docs/HowPartsWork.md)  
-[Automatic Updating](/addons/maaacks_options_menus/docs/AutomaticUpdating.md)  
+[Options Menu Setup](/docs/OptionsMenuSetup.md)  
+[Input Remapping Menus](/docs/InputRemappingMenus.md)  
+[Input Icon Mapping](/docs/InputIconMapping.md)  
+[Joypad Inputs](/docs/JoypadInputs.md)  
+[How Parts Work](/docs/HowPartsWork.md)  
+[Automatic Updating](/docs/AutomaticUpdating.md)  
 
 ## Media
 
 ### Videos
 
 [![Quick Intro Video](https://img.youtube.com/vi/U9CB3vKINVw/hqdefault.jpg)](https://youtu.be/U9CB3vKINVw)  
-[More Videos](/addons/maaacks_options_menus/docs/Videos.md)
+[More Videos](/docs/Videos.md)
 
 ### Screenshots
 
-![Key Rebinding](/addons/maaacks_options_menus/media/screenshot-6-input-list-3.png)  
-![Key Rebinding Themed](/addons/maaacks_options_menus/media/screenshot-6-input-list-8.png)  
-![Audio Controls](/addons/maaacks_options_menus/media/screenshot-6-audio-options-2.png)  
-[More Screenshots](/addons/maaacks_options_menus/docs/Screenshots.md)  
+![Key Rebinding](/media/screenshot-6-input-list-3.png)  
+![Key Rebinding Themed](/media/screenshot-6-input-list-8.png)  
+![Audio Controls](/media/screenshot-6-audio-options-2.png)  
+[More Screenshots](/docs/Screenshots.md)  
 
 ## Featured Games
 
 | Crumbling Castle | Dungeon Bodega Simulator | Lucky Break |  
 | :-------:| :-------: | :-------: |
-| ![Crumbling Castle](/addons/maaacks_options_menus/media/thumbnail-game-crumbling-castle.png) | ![Dungeon Bodega Simulator](/addons/maaacks_options_menus/media/thumbnail-game-dungeon-bodega-simulator.png) | ![Lucky Break](/addons/maaacks_options_menus/media/thumbnail-game-lucky-break.png) |
-| [Play on itch.io](https://maaack.itch.io/crumbling-castle) |  [Find on Steam](https://store.steampowered.com/app/3458180/Dungeon_Bodega_Simulator/)  | [Play on Steam](https://store.steampowered.com/app/4155880/Lucky_Break/)  |
+| ![Crumbling Castle](/media/thumbnail-game-crumbling-castle.png) | ![Dungeon Bodega Simulator](/media/thumbnail-game-dungeon-bodega-simulator.png) | ![Lucky Break](/media/thumbnail-game-lucky-break.png) |
+| [Play on itch.io](https://maaack.itch.io/crumbling-castle) |  [Play on Steam](https://store.steampowered.com/app/3458180/Dungeon_Bodega_Simulator/)  | [Play on Steam](https://store.steampowered.com/app/4155880/Lucky_Break/)  |
 
-[All Shared Games](/addons/maaacks_options_menus/docs/GamesMade.md)  
-
+[All Shared Games](/docs/GamesMade.md)  
 
 ## Community
 
